@@ -16,7 +16,10 @@ describe PageViewsAnalyzer::Display::MostVisitedPages do
     ]
   end
 
-  let(:screen_result) { "/help_page/1 5 visits\n/home 2 visits\n/contact 2 visits\n/about 1 visits\n/index 1 visits\n/about/2 1 visits\n" }
+  let(:screen_result) do
+    "/help_page/1 5 visits\n/home 2 visits\n/contact 2 visits\n" \
+    "/about 1 visits\n/index 1 visits\n/about/2 1 visits\n"
+  end
 
   it 'returns most visited and uniquely visited pages' do
     expect { subject.call }.to output(screen_result).to_stdout
