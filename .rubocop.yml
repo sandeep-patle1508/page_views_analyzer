@@ -1,0 +1,29 @@
+require: rubocop-rspec
+
+AllCops:
+  NewCops: enable
+
+Style/Documentation:
+    Enabled: false
+
+Layout/DotPosition:
+  Enabled: false
+
+Metrics/BlockLength:
+  Max: 15
+  CountComments: false
+  IgnoredMethods:
+    - describe
+    - context
+    - draw
+    - configure
+    - included
+    - sidekiq_retries_exhausted
+  Exclude:
+    - 'spec/**/*'
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
