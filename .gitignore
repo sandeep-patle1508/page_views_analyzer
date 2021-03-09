@@ -1,0 +1,5 @@
+# MacOSX specific
+.DS_Store
+
+# Banned IDEs
+.idea/
