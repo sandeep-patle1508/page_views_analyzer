@@ -37,14 +37,14 @@ describe PageViewsAnalyzer::Parse::PageView do
 
     context 'when path does not start with /' do
       let(:line_string) { 'example_path 111.222.333.444' }
-      let(:error_message) { 'path must start with /' }
+      let(:error_message) { "example_path path must start with '/'" }
 
       include_examples 'should raise validation error'
     end
 
     context 'when path does not start with /' do
       let(:line_string) { '/example_path 111.222.333.4445' }
-      let(:error_message) { 'ip format is invalid' }
+      let(:error_message) { '111.222.333.4445 ip format is invalid' }
 
       include_examples 'should raise validation error'
     end
