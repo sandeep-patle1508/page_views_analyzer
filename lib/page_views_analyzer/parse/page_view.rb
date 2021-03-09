@@ -4,8 +4,6 @@
 module PageViewsAnalyzer
   module Parse
     class PageView
-      IP_REGEX = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/
-
       def initialize(line_string)
         @line_string = line_string
       end
@@ -32,29 +30,10 @@ module PageViewsAnalyzer
       end
 
       def validate_data
-        raise_validation_error("path can not be blank") if blank?(page_path)
-
-        raise_validation_error('ip can not be blank') if blank?(ip)
-
-        raise_validation_error("#{page_path} path must start with '/'") if invalid_path?
-
-        raise_validation_error("#{ip} ip format is invalid") if invalid_ip?
-      end
-
-      def raise_validation_error(message)
-        raise PageViewsAnalyzer::Exceptions::ValidationError, message
-      end
-
-      def blank?(value)
-        value.nil? || value == ''
-      end
-
-      def invalid_path?
-        !page_path.start_with?('/')
-      end
-
-      def invalid_ip?
-        (ip =~ IP_REGEX).nil?
+        PageViewsAnalyzer::Parse::ValidatePagePathAndIp.new(
+          page_path: page_path,
+          ip: ip
+        ).call
       end
     end
   end

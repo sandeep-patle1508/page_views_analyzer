@@ -2,41 +2,44 @@
 
 require './lib/page_views_analyzer'
 
-describe PageViewsAnalyzer::Parse::PageView do
-  subject { described_class.new(line_string) }
+describe PageViewsAnalyzer::Parse::ValidatePagePathAndIp do
+  subject { described_class.new(page_path: page_path, ip: ip) }
 
-  let(:line_string) { '/example_path 111.222.333.444' }
+  let(:page_path) { '/example_path' }
+  let(:ip) { '111.222.333.444' }
 
-  let(:expected_result) { %w[/example_path 111.222.333.444] }
-
-  it 'returns expected array of parsed path and ip' do
-    expect(subject.call).to eq(expected_result)
+  it 'does not raise validation error' do
+    expect { subject.call }.not_to raise_error
   end
 
   context 'when input log data is invalid' do
     context 'when path is blank' do
-      let(:line_string) { '' }
+      let(:page_path) { '' }
+      let(:ip) { '111.222.333.444' }
       let(:error_message) { 'path can not be blank' }
 
       include_examples 'should raise validation error'
     end
 
     context 'when ip is blank' do
-      let(:line_string) { '/example_path' }
+      let(:page_path) { '/example_path' }
+      let(:ip) { '' }
       let(:error_message) { 'ip can not be blank' }
 
       include_examples 'should raise validation error'
     end
 
     context 'when path does not start with /' do
-      let(:line_string) { 'example_path 111.222.333.444' }
+      let(:page_path) { 'example_path' }
+      let(:ip) { '111.222.333.444' }
       let(:error_message) { "example_path path must start with '/'" }
 
       include_examples 'should raise validation error'
     end
 
     context 'when path does not start with /' do
-      let(:line_string) { '/example_path 111.222.333.4445' }
+      let(:page_path) { '/example_path' }
+      let(:ip) { '111.222.333.4445' }
       let(:error_message) { '111.222.333.4445 ip format is invalid' }
 
       include_examples 'should raise validation error'
