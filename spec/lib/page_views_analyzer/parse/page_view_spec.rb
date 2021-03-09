@@ -35,7 +35,7 @@ describe PageViewsAnalyzer::Parse::PageView do
       include_examples 'should raise validation error'
     end
 
-    context 'when path does not start with /' do
+    context 'when ip format is invalid' do
       let(:line_string) { '/example_path 111.222.333.4445' }
       let(:error_message) { '111.222.333.4445 ip format is invalid' }
 

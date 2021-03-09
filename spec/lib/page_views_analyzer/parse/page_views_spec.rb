@@ -40,11 +40,11 @@ describe PageViewsAnalyzer::Parse::PageViews do
     let(:file_name) { 'spec/support/random_file.txt' }
 
     it 'raise input file does not found error' do
-      expect{ page_views_parser.call }.
+      expect { page_views_parser.call }.
         to raise_error(
-             StandardError,
-             'Input file does not found'
-           )
+          StandardError,
+          'Input file does not found'
+        )
     end
   end
 
@@ -52,11 +52,11 @@ describe PageViewsAnalyzer::Parse::PageViews do
     let(:file_name) { 'spec/support/sample_invalid_log_file.txt' }
 
     it 'raise validation error' do
-      expect{ page_views_parser.call }.
+      expect { page_views_parser.call }.
         to raise_error(
-             PageViewsAnalyzer::Exceptions::ValidationError,
-             '126111.318.035.038 ip format is invalid'
-           )
+          PageViewsAnalyzer::Exceptions::ValidationError,
+          '126111.318.035.038 ip format is invalid'
+        )
     end
   end
 end

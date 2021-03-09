@@ -27,3 +27,6 @@ RSpec/MultipleExpectations:
 
 RSpec/MessageSpies:
   EnforcedStyle: receive
+
+RSpec/NamedSubject:
+  Enabled: false

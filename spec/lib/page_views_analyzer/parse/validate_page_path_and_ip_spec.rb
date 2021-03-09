@@ -37,7 +37,7 @@ describe PageViewsAnalyzer::Parse::ValidatePagePathAndIp do
       include_examples 'should raise validation error'
     end
 
-    context 'when path does not start with /' do
+    context 'when ip format is invalid' do
       let(:page_path) { '/example_path' }
       let(:ip) { '111.222.333.4445' }
       let(:error_message) { '111.222.333.4445 ip format is invalid' }
