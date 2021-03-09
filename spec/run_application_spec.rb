@@ -5,7 +5,7 @@ require './run_application'
 describe RunApplication do
   subject { described_class.new(input_file_name) }
 
-  let(:input_file_name) { 'spec/support/sample_log_file.txt' }
+  let(:input_file_name) { 'spec/support/sample_log_file.log' }
 
   let(:screen_result) do
     "/help_page/1 5 visits\n/home 2 visits\n/contact 2 visits\n" \
@@ -21,7 +21,7 @@ describe RunApplication do
   end
 
   context 'when input log file does not exist' do
-    let(:input_file_name) { 'spec/support/wrong_input_file.txt' }
+    let(:input_file_name) { 'spec/support/wrong_input_file.log' }
 
     it 'raise file does not exist error' do
       expect { subject.call }.to raise_error('Input file does not found')
@@ -29,7 +29,7 @@ describe RunApplication do
   end
 
   context 'when input log file has invalid data' do
-    let(:input_file_name) { 'spec/support/sample_invalid_log_file.txt' }
+    let(:input_file_name) { 'spec/support/sample_invalid_log_file.log' }
 
     it 'raise validation error' do
       expect { subject.call }.

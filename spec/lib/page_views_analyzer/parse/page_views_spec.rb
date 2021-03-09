@@ -5,7 +5,7 @@ require './lib/page_views_analyzer'
 describe PageViewsAnalyzer::Parse::PageViews do
   subject(:page_views_parser) { described_class.new(file_name) }
 
-  let(:file_name) { 'spec/support/sample_log_file.txt' }
+  let(:file_name) { 'spec/support/sample_log_file.log' }
   let(:expected_data) do
     {
       '/help_page/1' => {
@@ -37,7 +37,7 @@ describe PageViewsAnalyzer::Parse::PageViews do
   end
 
   context 'when file is not exist' do
-    let(:file_name) { 'spec/support/random_file.txt' }
+    let(:file_name) { 'spec/support/random_file.log' }
 
     it 'raise input file does not found error' do
       expect { page_views_parser.call }.
@@ -49,7 +49,7 @@ describe PageViewsAnalyzer::Parse::PageViews do
   end
 
   context 'when log file has invalid row' do
-    let(:file_name) { 'spec/support/sample_invalid_log_file.txt' }
+    let(:file_name) { 'spec/support/sample_invalid_log_file.log' }
 
     it 'raise validation error' do
       expect { page_views_parser.call }.
