@@ -1,5 +1,5 @@
 # Page Views Analyzer
-This analyze the page views count and display most viewed and uniquely viewed pages in descending order.  
+This application is reading and log file and displaying most viewed and most uniquely viewed pages in descending order on the screen.  
 
 # Assumptions
 * Each page path starts with '/'
@@ -23,7 +23,7 @@ This analyze the page views count and display most viewed and uniquely viewed pa
 * install Ruby ruby-2.6.5 version
 
 ## Setup
-* git clone git@github.com:sandeep-patle1508/page_views_analyzer.git
+* `git clone git@github.com:sandeep-patle1508/page_views_analyzer.git`
 * Go to application folder
 `cd page_views_analyzer`
 * Install gems by running `bundle install` command
@@ -33,8 +33,13 @@ We are ready to run the application.
 ## Usage
 We can run this application for any log file. 
 
-Command: `ruby ./main.rb <file_name>`
-Example for sample file: `ruby ./main.rb webserver.log`
+Command: 
+
+`ruby ./main.rb <file_name>`
+
+Example for sample file: 
+
+`ruby ./main.rb webserver.log`
 
 It will display the most viewed and most uniquely viewed pages on the screen.  
 
