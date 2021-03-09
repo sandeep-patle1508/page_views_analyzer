@@ -4,7 +4,7 @@
 module PageViewsAnalyzer
   module Parse
     class ValidatePagePathAndIp
-      IP_REGEX = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/
+      IP_REGEX = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/.freeze
 
       def initialize(page_path:, ip:)
         @page_path = page_path
@@ -12,7 +12,7 @@ module PageViewsAnalyzer
       end
 
       def call
-        raise_validation_error("path can not be blank") if page_path_blank?
+        raise_validation_error('path can not be blank') if page_path_blank?
 
         raise_validation_error('ip can not be blank') if ip_blank?
 
